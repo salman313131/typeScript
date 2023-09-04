@@ -1,11 +1,12 @@
-var number1 = document.getElementById('number1');
-var number2 = document.getElementById('number2');
-var button = document.getElementById('add');
-function add(num1, num2) {
-    console.log(num1 + num2);
-}
-button.addEventListener('click', function () {
-    var num1 = number1.value;
-    var num2 = number2.value;
-    add(+num1, +num2);
-});
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const todo_1 = __importDefault(require("./routes/todo"));
+const body_parser_1 = __importDefault(require("body-parser"));
+const app = (0, express_1.default)();
+app.use(body_parser_1.default.json());
+app.use(todo_1.default);
+app.listen(3000);
